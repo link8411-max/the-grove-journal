@@ -53,7 +53,7 @@ export default async function PowerPilatesArticle({ params }: Props) {
         Power Pilates
       </span>
 
-      <h1 className="font-serif text-3xl md:text-4xl text-stone-900 leading-snug tracking-tight">
+      <h1 className="font-serif text-[1.65rem] md:text-4xl text-stone-900 leading-[1.35] md:leading-snug tracking-tight">
         {post.title}
       </h1>
 

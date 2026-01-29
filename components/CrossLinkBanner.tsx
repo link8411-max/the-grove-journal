@@ -75,6 +75,13 @@ export default function CrossLinkBanner({ articleTitle, category }: Props) {
           Blog
         </a>
       </div>
+
+      {/* Naver search nudge */}
+      <p className="mt-8 text-center font-serif italic text-stone-400 text-[13px] tracking-wide leading-relaxed">
+        더 많은 재활 사례와 실시간 소식은 네이버에서
+        <br className="sm:hidden" />
+        &lsquo;필라테스 그로브&rsquo;를 검색해 보세요.
+      </p>
     </aside>
   );
 }
