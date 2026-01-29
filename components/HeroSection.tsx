@@ -24,6 +24,9 @@ export default function HeroSection() {
         </span>
         <div className="w-8 h-px bg-stone-300" />
       </div>
+
+      {/* Bottom border */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-stone-300 to-transparent" />
     </section>
   );
 }

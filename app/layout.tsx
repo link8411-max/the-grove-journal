@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileReserveBar from "@/components/MobileReserveBar";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -55,6 +56,8 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />
+        <MobileReserveBar />
+        <div className="h-14 sm:hidden" />
       </body>
     </html>
   );
