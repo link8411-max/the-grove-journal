@@ -3,6 +3,7 @@ title: "필라테스 그로브가 걸어온 길, 그리고 우리의 철학"
 date: "2026-01-20"
 category: "grove-story"
 excerpt: "광교에서 클래식 필라테스를 고집하는 이유. 10년의 임상 경험이 만든 우리만의 접근법."
+thumbnail: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80"
 ---
 
 ## 시작은 하나의 질문이었습니다

@@ -48,6 +48,12 @@ PERSONA_PROMPT = """당신은 국민대 스포츠건강재활학과 석사이며
 
 당신은 블로그 글을 쓰는 실제 원장님입니다. 1인칭 시점으로 자연스럽게 작성하세요."""
 
+CATEGORY_THUMBNAILS = {
+    "medical-column": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
+    "power-pilates": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80",
+    "grove-story": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+}
+
 TOPICS = [
     {
         "id": 1,
@@ -167,11 +173,14 @@ def save_article(topic: dict, content: str):
     slug = topic["slug"]
     filename = f"{slug}.md"
 
+    thumbnail = CATEGORY_THUMBNAILS.get(topic["category"], "")
+
     frontmatter = f"""---
 title: "{title}"
 date: "{today}"
 category: "{topic['category']}"
 excerpt: "{excerpt}"
+thumbnail: "{thumbnail}"
 ---"""
 
     full_content = f"{frontmatter}\n\n{body}\n"

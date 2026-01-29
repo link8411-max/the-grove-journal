@@ -3,6 +3,7 @@ title: "광교 직장인 여러분, 목이 아픈 건 자세 때문이 아니라
 date: "2026-01-28"
 category: "medical-column"
 excerpt: "거북목 교정 베개, 자세 교정기… 다 써봤는데 왜 나아지지 않을까요? 답은 당신의 '호흡 패턴'에 있습니다."
+thumbnail: "https://images.unsplash.com/photo-1503513270701-67f56ac2e4f6?w=800&q=80"
 ---
 
 ## 왜 목이 그렇게 뻣뻣한 걸까

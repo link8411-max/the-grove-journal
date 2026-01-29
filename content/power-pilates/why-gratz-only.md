@@ -3,6 +3,7 @@ title: "왜 우리는 100% GRATZ만 고집하는가"
 date: "2026-01-25"
 category: "power-pilates"
 excerpt: "필라테스 기구에도 '계보'가 있습니다. GRATZ가 필라테스계의 에르메스로 불리는 이유."
+thumbnail: "https://images.unsplash.com/photo-1747240549807-fc3962949818?w=800&q=80"
 ---
 
 ## 필라테스 기구에도 계보가 있습니다
