@@ -40,5 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# bot state
-scripts/.bot_state.json
+# bot state는 Git에 포함 (GitHub Actions 순환 유지용)

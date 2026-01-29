@@ -1,0 +1,75 @@
+name: Daily Content Publish
+
+on:
+  # 매일 한국시간 오전 7시 자동 실행 (UTC 22:00 = KST 07:00)
+  schedule:
+    - cron: '0 22 * * *'
+  # 수동 실행도 가능
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: '주제 번호 (1-6, 비우면 자동 순환)'
+        required: false
+        type: string
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install google-generativeai
+
+      - name: Generate content
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.topic }}" ]; then
+            python scripts/marketing_bot.py --topic ${{ github.event.inputs.topic }}
+          else
+            python scripts/marketing_bot.py
+          fi
+
+      - name: Check for new content
+        id: check
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No new content generated"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "New content detected"
+          fi
+
+      - name: Commit and push
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "The Grove Bot"
+          git config user.email "bot@thegrovejournal.com"
+          git add content/
+          git add scripts/.bot_state.json || true
+
+          # 오늘 날짜로 커밋 메시지 생성
+          DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)
+          WEEKDAY=$(TZ=Asia/Seoul date +%u)
+
+          # 요일별 카테고리 표시
+          case $WEEKDAY in
+            1) DAY_LABEL="월요 의학 칼럼" ;;
+            3) DAY_LABEL="수요 파워 필라테스" ;;
+            5) DAY_LABEL="금요 그로브 소식" ;;
+            *) DAY_LABEL="콘텐츠" ;;
+          esac
+
+          git commit -m "publish: ${DATE} ${DAY_LABEL} 자동 발행"
+          git push
