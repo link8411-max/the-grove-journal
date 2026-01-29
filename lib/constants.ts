@@ -5,6 +5,7 @@ export const SITE = {
   description:
     "필라테스 그로브의 디지털 매거진. 스포츠 재활 전문가가 전하는 의학적이고 심미적인 움직임 이야기.",
   url: "https://the-grove-journal.vercel.app",
+  domain: "the-grove-journal.vercel.app",
 } as const;
 
 export const LINKS = {
